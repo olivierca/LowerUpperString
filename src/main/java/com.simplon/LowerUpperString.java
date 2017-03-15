@@ -3,14 +3,19 @@ package com.simplon;
 
 public class LowerUpperString {
 
-    private String result="";
-    public String toAlternativeString(String chaine)
-    {
-        for (int i = 0; i < chaine.length(); i++) {
-            if(chaine.codePointAt(i) < 97)  result += chaine.toLowerCase().charAt(i);
-            else    result += chaine.toUpperCase().charAt(i);
+    public String toAlternativeString(String input) {
+        StringBuilder result = new StringBuilder();
+        if (input == null || input.isEmpty()) {
+            return result.toString();
         }
-
-        return result;
+        char[] letters = input.toCharArray();
+        for (char letter : letters) {
+            if (Character.isUpperCase(letter)) {
+                result.append(Character.toLowerCase(letter));
+            } else {
+                result.append(Character.toUpperCase(letter));
+            }
+        }
+        return result.toString();
     }
 }
